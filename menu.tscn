@@ -1,0 +1,64 @@
+[gd_scene load_steps=4 format=3 uid="uid://to6v5xiqay0h"]
+
+[ext_resource type="FontFile" uid="uid://o5pkhlkvf0hh" path="res://Fonts/elv-pixels-01.otf" id="1_olqpn"]
+[ext_resource type="Script" path="res://Scripts/MainMenu/StartButton.gd" id="2_jgq2o"]
+[ext_resource type="AudioStream" uid="uid://cc5pwnxvq7h3d" path="res://Sounds/MenuSounds/UI_Button_Click_4.mp3" id="3_63vuf"]
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 481.0
+offset_top = 245.0
+offset_right = 581.0
+offset_bottom = 300.0
+scale = Vector2(1.72, 1.44)
+
+[node name="StartButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_olqpn")
+theme_override_font_sizes/font_size = 14
+text = "Play"
+script = ExtResource("2_jgq2o")
+
+[node name="ButtonSound" type="AudioStreamPlayer" parent="VBoxContainer/StartButton"]
+stream = ExtResource("3_63vuf")
+script = ExtResource("2_jgq2o")
+
+[node name="OptionsButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_pressed_color = Color(0.464801, 0.635498, 0.998299, 1)
+theme_override_colors/font_hover_color = Color(0.0591614, 0.489223, 0.826966, 1)
+theme_override_colors/icon_normal_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_pressed_color = Color(0.99558, 0.99558, 0.99558, 1)
+theme_override_colors/icon_hover_color = Color(0, 0.521569, 0.580392, 1)
+theme_override_colors/icon_hover_pressed_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("1_olqpn")
+theme_override_font_sizes/font_size = 14
+text = "Options"
+
+[node name="ButtonSound" type="AudioStreamPlayer" parent="VBoxContainer/OptionsButton"]
+stream = ExtResource("3_63vuf")
+
+[node name="QuitButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_pressed_color = Color(0.464801, 0.635498, 0.998299, 1)
+theme_override_colors/font_hover_color = Color(0.0591614, 0.489223, 0.826966, 1)
+theme_override_colors/icon_normal_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_pressed_color = Color(0.99558, 0.99558, 0.99558, 1)
+theme_override_colors/icon_hover_color = Color(0, 0.521569, 0.580392, 1)
+theme_override_colors/icon_hover_pressed_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("1_olqpn")
+theme_override_font_sizes/font_size = 14
+text = "Quit"
+
+[node name="ButtonSound" type="AudioStreamPlayer" parent="VBoxContainer/QuitButton"]
+stream = ExtResource("3_63vuf")
+
+[connection signal="pressed" from="VBoxContainer/StartButton" to="VBoxContainer/StartButton/ButtonSound" method="_on_start_button_pressed"]
